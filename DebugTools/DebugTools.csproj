@@ -7,4 +7,11 @@
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HBase\HDataCore.csproj" />
+    <ProjectReference Include="..\HECSCore\HSystemsCore.csproj" />
+    <ProjectReference Include="..\HPhysics\HPhysics.csproj" />
+    <ProjectReference Include="..\Physics\Physics.csproj" />
+    <ProjectReference Include="..\SceneDataInterface\SceneDataInterface.csproj" />
+  </ItemGroup>
 </Project>

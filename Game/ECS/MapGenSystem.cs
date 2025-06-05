@@ -24,9 +24,9 @@ namespace HCore.ECS
         {
             base.Initialize();
 
-            SpawnEntity(new List<BaseComponent>() 
+            SpawnEntity(new List<BaseComponent>()
             {
-                new LocationComponent(new Vector2(0)),
+                new LocationComponent(new Vector2(1, 0)),
                 new MovementComponent(new Vector2(0, 0), 1.5f, 1f),
 
                 new SpriteComponent(
@@ -67,9 +67,10 @@ namespace HCore.ECS
                         2f
                     ),
                     true,
-                    null
+                    new List<PostprocessingEffect>()
                 ),
-                new CollisionComponent(new AABBCollision(-8, 8, -8, 8), CollisionInteractionType.BlockAndOverlap, new Vector2(0, 0)),
+                //new CollisionComponent(new AABBCollision(0, 0, -8, 8, -8, 8), CollisionInteractionType.BlockAndOverlap),
+                new CollisionComponent(new CircleCollision(0, 0, 16), CollisionInteractionType.BlockAndOverlap),
                 new ControlComponent()
             }, gameScene);
 
@@ -80,7 +81,11 @@ namespace HCore.ECS
                 for (int j = -64; j < 63; j++)
                     SpawnEntity(new List<BaseComponent>() { new LocationComponent(new Vector2(i * 16, j * 16)), new SpriteComponent(new Sprite(new SpriteAtlas(gameScene.ResourceManager.GetTexture("tilesAtlas1"), 3, 9), 0), new Vector2(0, 0), 0f) }, gameScene);
             }
+
+            for (int j = -19; j < 99; j++)
+                SpawnEntity(new List<BaseComponent>() { new LocationComponent(new Vector2(-130, j * 16)), new SpriteComponent(new Sprite(new SpriteAtlas(gameScene.ResourceManager.GetTexture("tilesAtlas1"), 3, 9), 9), new Vector2(0, 0), 1f),
+                new CollisionComponent(new AABBCollision(0, 0, -8, 8, -8, 8), CollisionInteractionType.BlockAndOverlap)}, gameScene);
+                //new CollisionComponent(new CircleCollision(0, 0, 16), CollisionInteractionType.BlockAndOverlap)}, gameScene);
         }
     }
 }
-    

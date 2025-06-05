@@ -19,7 +19,7 @@ public class CollisionPreparationSystem : BaseProcessingSystem
         base.Initialize();
 
 
-        quadTree = new SpatialQuadTree(new Vector2(0, 0), new Rectangle(-128 * 16, -127 * 16, 256 * 16, 256 * 16));
+        quadTree = new SpatialQuadTree(new Vector2(0, 0), new Rectangle(-128 * 16, -128 * 16, 128 * 16, 128 * 16));
         //quadTree.InitializePixelTexture(gameScene.graphicsDevice);
     }
 

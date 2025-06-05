@@ -12,7 +12,7 @@ public class SpatialQuadTree
 {
     public Vector2 centerLocation;
     public Rectangle mapBounds;
-    public int numberBeforeDivide = 15;
+    public int numberBeforeDivide = 15999;
     public int dividesMax = 5;
     public QuadNode Root { get; private set; } = null!;
 
@@ -170,8 +170,8 @@ public class QuadNode
     {
         if (LeftTop is not null)
         {
-            float x = locationComponent.location.X + collisionToAdd.collisionOffset.X;
-            float y = locationComponent.location.Y - collisionToAdd.collisionOffset.Y;
+            float x = locationComponent.location.X + collisionToAdd.collision.xOffset;
+            float y = locationComponent.location.Y - collisionToAdd.collision.yOffset;
 
             if(collisionToAdd.collision is AABBCollision)// if ((collisionToAdd.collision as AABBCollision).GetWidth > 0 || collisionToAdd.rectangleCollision.Height > 0)
             {
@@ -297,6 +297,37 @@ public class QuadNode
 
     public bool IntersectQuadrant(float x, float y, CollisionComponent component, Rectangle quadrantBounds)
     {
+        /*        float qMinX = quadrantBounds.Left;
+                float qMaxX = quadrantBounds.Right;
+                float qMinY = quadrantBounds.Top;
+                float qMaxY = quadrantBounds.Bottom;
+
+                if (component.collision is AABBCollision aabb)
+                {
+                    float objMinX = aabb.xMin + x;
+                    float objMaxX = aabb.xMax + x;
+                    float objMinY = aabb.yMin - y;
+                    float objMaxY = aabb.yMax - y;
+
+                    return !(objMaxX < qMinX || objMinX > qMaxX ||
+                             objMaxY < qMinY || objMinY > qMaxY);
+                }
+
+                if (component.collision is CircleCollision circle)
+                {
+                    float centerX = x + circle.xOffset;
+                    float centerY = y - circle.yOffset;
+
+                    float closestX = Math.Clamp(centerX, qMinX, qMaxX);
+                    float closestY = Math.Clamp(centerY, qMinY, qMaxY);
+
+                    float dx = centerX - closestX;
+                    float dy = centerY - closestY;
+
+                    return (dx * dx + dy * dy) <= (circle.radius * circle.radius);
+                }
+
+                return false;*/
         if (component.collision is AABBCollision)//(width > 0 || height > 0)
         {
             float width = (component.collision as AABBCollision).GetWidth;

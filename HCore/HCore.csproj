@@ -9,6 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoreServices\HInfrastructure.csproj" />
+    <ProjectReference Include="..\DebugTools\DebugTools.csproj" />
     <ProjectReference Include="..\EventsSystem\EventSystem.csproj" />
     <ProjectReference Include="..\Game\Game.csproj" />
     <ProjectReference Include="..\Graphics\HGraphics.csproj" />

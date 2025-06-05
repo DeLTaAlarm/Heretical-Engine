@@ -37,6 +37,7 @@ namespace HCore
             assemblyLoader.LoadAssembly("HPhysics");
             assemblyLoader.LoadAssembly("HGraphics");
             assemblyLoader.LoadAssembly("Game");
+            assemblyLoader.LoadAssembly("DebugTools");
 
             assemblyLoader.LoadSystemsFromAssemblies();
             //assemblyLoader.LoadAssembly();

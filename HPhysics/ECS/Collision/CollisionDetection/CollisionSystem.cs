@@ -34,6 +34,8 @@ public class CollisionSystem : BaseProcessingSystem
             if (!collisionsArray[i].wasChangedFromLastFrame || collisionsArray[i].collisionType == CollisionInteractionType.Block)
                 continue;
 
+            LocationComponent locationComponent = (LocationComponent)GetComponentOfEntityByType(collisionsArray[i].entityOfComponent, locationComponentType);
+
             List<QuadNode> quadrantlist = collisionsArray[i].currentQuadrants;
 
             for (int j = 0; j < quadrantlist.Count; j++)
@@ -43,7 +45,12 @@ public class CollisionSystem : BaseProcessingSystem
                     if (collisionsArray[i] == quadrantlist[j].Collisions[k])
                         continue;
 
-                    if (collisionsArray[i].collision.CollidesWith(quadrantlist[j].Collisions[k].collision))
+                    LocationComponent locationComponent2 = (LocationComponent)GetComponentOfEntityByType(quadrantlist[j].Collisions[k].entityOfComponent, locationComponentType);
+
+                    collisionsArray[i].collision.locX = locationComponent.location.X;
+                    collisionsArray[i].collision.locY = locationComponent.location.Y;
+
+                    if (collisionsArray[i].collision.CollidesWith(quadrantlist[j].Collisions[k].collision, locationComponent2.location.X, locationComponent2.location.Y))
                     {
                         Collide(collisionsArray[i], quadrantlist[j].Collisions[k], collisionsContainer);
                     }

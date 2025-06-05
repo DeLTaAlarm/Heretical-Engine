@@ -28,23 +28,34 @@ namespace Physics
             radius = _radius;
         }
 
-        public override bool CollidesWith(Collision other) => other.CollidesWithCircle(this);
+        public override bool CollidesWith(Collision other, float locX, float locY) => other.CollidesWithCircle(this, locX, locY);
 
-        public override bool CollidesWithCircle(in CircleCollision other)
+        public override bool CollidesWithCircle(in CircleCollision other, float locX, float locY)
         {
-            float dx = other.xOffset - this.xOffset;
-            float dy = other.yOffset - this.yOffset;
+            float dx = (other.locX + other.xOffset) - (locX + this.xOffset);
+            float dy = (other.locY - other.yOffset) - (locY - this.yOffset);
             float combinedRadius = this.radius + other.radius;
             return (dx * dx + dy * dy) < (combinedRadius * combinedRadius);
         }
 
-        public override bool CollidesWithAABB(in AABBCollision aabb)
+        public override bool CollidesWithAABB(in AABBCollision aabb, float locX, float locY)
         {
-            float closestX = MathUtility.Clamp(this.xOffset, aabb.xMin, aabb.xMax);
-            float closestY = MathUtility.Clamp(this.yOffset, aabb.yMin, aabb.yMax);
+            float otherLocX = aabb.locX;
+            float otherLocY = aabb.locY;
 
-            float dx = this.xOffset - closestX;
-            float dy = this.yOffset - closestY;
+            float thisCenterX = this.xOffset + locX;
+            float thisCenterY = this.yOffset - locY;
+
+            float aabbMinX = aabb.xMin + otherLocX;
+            float aabbMaxX = aabb.xMax + otherLocX;
+            float aabbMinY = aabb.yMin - otherLocY;
+            float aabbMaxY = aabb.yMax - otherLocY;
+
+            float closestX = MathUtility.Clamp(thisCenterX, aabbMinX, aabbMaxX);
+            float closestY = MathUtility.Clamp(thisCenterY, aabbMinY, aabbMaxY);
+
+            float dx = thisCenterX - closestX;
+            float dy = thisCenterY - closestY;
 
             return (dx * dx + dy * dy) <= (this.radius * this.radius);
         }

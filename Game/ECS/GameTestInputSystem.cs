@@ -9,6 +9,8 @@ using HDataCore;
 using HSystemsCore;
 using Input.ECS.Control;
 using static SceneDataInterface.ECSManager;
+using System.Diagnostics;
+using StandartComponents.ECS;
 
 namespace HCore.ECS.Control
 {
@@ -19,6 +21,8 @@ namespace HCore.ECS.Control
         {
             SubscribeEvent<ControlComponent, EventOnKeyboardInteractionArgs>(OnKeyboardInteraction);
             SubscribeEvent<ControlComponent, EventOnKeyboardInteractionArgs>(OnKeyboardInteractionSpriteSelect);
+            SubscribeEvent<ControlComponent, EventOnCollideArgs>(OnCollide);
+
         }
 
         public void OnKeyboardInteraction(Entity entity, ControlComponent controlComponent, EventOnKeyboardInteractionArgs args)
@@ -104,6 +108,13 @@ namespace HCore.ECS.Control
                     else sac.animationData.Reset();
                 }
             }
+        }
+
+        public void OnCollide(Entity entity, ControlComponent cc, EventOnCollideArgs args)
+        {
+            LocationComponent lc = GetComponentOfEntity<LocationComponent>(entity);
+            lc.location.X = 0;
+            lc.location.Y = 0;
         }
 
         public override void Update(GameTime gameTime)

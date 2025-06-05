@@ -18,15 +18,13 @@ public class CollisionComponent : BaseComponent
     public Vector2 lastLocation = new Vector2(float.MinValue, float.MinValue);
     public bool wasChangedFromLastFrame;
     public CollisionInteractionType collisionType;
-    public Vector2 collisionOffset;
     public List<QuadNode> currentQuadrants = new List<QuadNode>();
 
 
 
-    public CollisionComponent(Physics.Collision _collision, CollisionInteractionType _collisionType, Vector2 _collisionOffset)
+    public CollisionComponent(Physics.Collision _collision, CollisionInteractionType _collisionType)
     {
         collision = _collision;
         collisionType = _collisionType;
-        collisionOffset = _collisionOffset;
     }
 }
