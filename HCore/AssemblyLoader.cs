@@ -188,9 +188,9 @@ namespace HCore
         /// <returns>
         ///Возвращает словарь заполненный элементами, ключи которых принадлежат массиву всех загруженных типов компонентов, а значения равны пустому списку компонентов и порядковый номер компонента. 
         /// </returns>
-        public Dictionary<Type, (List<BaseComponent>, int)> GetComponentsArray()
+        public Dictionary<string, (List<BaseComponent>, int)> GetComponentsArray()
         {
-            List<Type> componentsList = new List<Type>();
+            List<string> componentsList = new List<string>();
 
             for (int i = 0; i < systemsAssemblies.Count; i++)
             {
@@ -200,13 +200,13 @@ namespace HCore
                     {
                         if (typeof(BaseComponent).IsAssignableFrom(currentType))
                         {
-                            componentsList.Add(currentType);
+                            componentsList.Add(currentType.FullName);
                         }
                     }
                 }
             }
 
-            Dictionary<Type, (List<BaseComponent>, int)> outputComponents = new Dictionary<Type, (List<BaseComponent>, int)>();
+            Dictionary<string, (List<BaseComponent>, int)> outputComponents = new Dictionary<string, (List<BaseComponent>, int)>();
 
             for (int i = 0; i <  componentsList.Count; i++)
             {
@@ -220,7 +220,7 @@ namespace HCore
         /// Инициализирует словарь с созданными экземплярами глобальных ячеек данных
         /// </summary>
         /// <returns>Возвращает словарь с созданными глобальными ячейками данных</returns>
-        public Dictionary<Type, GlobalDataContainer> GetGlobalDataContainersArray()
+        public Dictionary<string, GlobalDataContainer> GetGlobalDataContainersArray()
         {
             List<Type> dataContainersList = new List<Type>();
 
@@ -238,11 +238,11 @@ namespace HCore
                 }
             }
 
-            Dictionary<Type, GlobalDataContainer> outputDataContainers = new Dictionary<Type, GlobalDataContainer>();
+            Dictionary<string, GlobalDataContainer> outputDataContainers = new Dictionary<string, GlobalDataContainer>();
 
             for (int i = 0; i < dataContainersList.Count; i++)
             {
-                outputDataContainers.Add(dataContainersList[i], (GlobalDataContainer)dataContainersList[i].GetConstructors()[0].Invoke(new object[0] { }));
+                outputDataContainers.Add(dataContainersList[i].FullName, (GlobalDataContainer)dataContainersList[i].GetConstructors()[0].Invoke(new object[0] { }));
             }
 
             return outputDataContainers;
@@ -252,7 +252,7 @@ namespace HCore
         /// Инициализирует словарь с созданными экземплярами локальных ячеек данных
         /// </summary>
         /// <returns>Возвращает словарь с созданными локальными ячейками данных</returns>
-        public Dictionary<Type, SceneDataContainer> GetSceneDataContainersArray()
+        public Dictionary<string, SceneDataContainer> GetSceneDataContainersArray()
         {
             List<Type> dataContainersList = new List<Type>();
 
@@ -270,11 +270,11 @@ namespace HCore
                 }
             }
 
-            Dictionary<Type, SceneDataContainer> outputDataContainers = new Dictionary<Type, SceneDataContainer>();
+            Dictionary<string, SceneDataContainer> outputDataContainers = new Dictionary<string, SceneDataContainer>();
 
             for (int i = 0; i < dataContainersList.Count; i++)
             {
-                outputDataContainers.Add(dataContainersList[i], (SceneDataContainer)dataContainersList[i].GetConstructors()[0].Invoke(new object[0] { }));
+                outputDataContainers.Add(dataContainersList[i].FullName, (SceneDataContainer)dataContainersList[i].GetConstructors()[0].Invoke(new object[0] { }));
             }
 
             return outputDataContainers;

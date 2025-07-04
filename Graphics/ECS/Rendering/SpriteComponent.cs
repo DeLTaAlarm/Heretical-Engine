@@ -2,7 +2,7 @@
 using HDataCore;
 using GraphicsData;
 
-namespace Graphics.ECS.Rendering
+namespace HGraphics.ECS.Rendering
 {
     public class SpriteComponent : BaseComponent
     {

@@ -1,7 +1,7 @@
-﻿using Graphics.ECS.Camera;
+﻿using HGraphics.ECS.Camera;
 using HDataCore;
 
-namespace HCore
+namespace HGraphics.ECS.Camera
 {
     public class CurrentCameraSceneContainer : SceneDataContainer
     {

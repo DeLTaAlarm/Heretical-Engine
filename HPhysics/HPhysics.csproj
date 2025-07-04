@@ -15,5 +15,6 @@
     <ProjectReference Include="..\HECSCore\HSystemsCore.csproj" />
     <ProjectReference Include="..\Physics\Physics.csproj" />
     <ProjectReference Include="..\SceneDataInterface\SceneDataInterface.csproj" />
+    <ProjectReference Include="..\StandartComponents\StandardComponents.csproj" />
   </ItemGroup>
 </Project>

@@ -194,9 +194,9 @@ namespace HCore.Core
 
         static public T GetGlobalDataContainer<T>(SceneManager sceneManager) where T : GlobalDataContainer
         {
-            if (sceneManager.globalDataStorage.ContainsKey(typeof(T)))
+            if (sceneManager.globalDataStorage.ContainsKey(typeof(T).FullName))
             {
-                return (T)sceneManager.globalDataStorage[typeof(T)];
+                return (T)sceneManager.globalDataStorage[typeof(T).FullName];
             }
             else return null;
         }

@@ -47,18 +47,18 @@ namespace SceneDataInterface
 
             foreach (BaseComponent component in components)
             {
-                scene.ComponentsByType[component.GetType()].Item1.Add(component);
+                scene.ComponentsByType[component.GetType().ToString()].Item1.Add(component);
             }
         }
 
         static public List<T> GetAllComponentsList<T>(ISceneData scene) where T : BaseComponent
         {
-            return scene.ComponentsByType[typeof(T)].Item1.Cast<T>().ToList();
+            return scene.ComponentsByType[typeof(T).ToString()].Item1.Cast<T>().ToList();
         }
 
         static public T[] GetAllComponents<T>(ISceneData scene) where T : BaseComponent
         {
-            return scene.ComponentsByType[typeof(T)].Item1.Cast<T>().ToArray();
+            return scene.ComponentsByType[typeof(T).ToString()].Item1.Cast<T>().ToArray();
         }
 
         static public void DestroyComponent(BaseComponent component, ISceneData scene)
@@ -67,9 +67,9 @@ namespace SceneDataInterface
             {
                 //component.entityOfComponent.components[GetComponentIDbyObject(component)] = null;
                 component.entityOfComponent.components.Remove(component.GetType());
-                scene.ComponentsByType[component.GetType()].Item1[scene.ComponentsByType[component.GetType()].Item1.FindIndex(f => f == component)] = scene.ComponentsByType[component.GetType()].Item1.Last();
+                scene.ComponentsByType[component.GetType().ToString()].Item1[scene.ComponentsByType[component.GetType().ToString()].Item1.FindIndex(f => f == component)] = scene.ComponentsByType[component.GetType().ToString()].Item1.Last();
 
-                scene.ComponentsByType[component.GetType()].Item1.RemoveAt(scene.ComponentsByType[component.GetType()].Item1.Count - 1);
+                scene.ComponentsByType[component.GetType().ToString()].Item1.RemoveAt(scene.ComponentsByType[component.GetType().ToString()].Item1.Count - 1);
 
                 //gameWorld.componentsByType[component.GetType()].Item1.Remove(component);
             }
@@ -86,7 +86,7 @@ namespace SceneDataInterface
 
                 foreach (BaseComponent bc in entity.components.Values)
                 {
-                    scene.ComponentsByType[bc.GetType()].Item1.Remove(bc);
+                    scene.ComponentsByType[bc.GetType().ToString()].Item1.Remove(bc);
                 }
                 scene.EntitiesToDestroy.Add(entity);
             }
@@ -103,19 +103,19 @@ namespace SceneDataInterface
 
         static public T GetSceneDataContainer<T>(ISceneData scene) where T : SceneDataContainer
         {
-            if (scene.SceneDataStorage.ContainsKey(typeof(T)))
+            if (scene.SceneDataStorage.ContainsKey(typeof(T).ToString()))
             {
-                return (T)scene.SceneDataStorage[typeof(T)];
+                return (T)scene.SceneDataStorage[typeof(T).ToString()];
             }
             else return null;
         }
 
         static public T CreateSceneDataContainer<T>(ISceneData scene) where T : SceneDataContainer, new()
         {
-            if (!scene.SceneDataStorage.ContainsKey(typeof(T)))
+            if (!scene.SceneDataStorage.ContainsKey(typeof(T).ToString()))
             {
-                scene.SceneDataStorage.Add(typeof(T), new T());
-                return (T)scene.SceneDataStorage[typeof(T)];
+                scene.SceneDataStorage.Add(typeof(T).ToString(), new T());
+                return (T)scene.SceneDataStorage[typeof(T).ToString()];
             }
             else return null;
         }

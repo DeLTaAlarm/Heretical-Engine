@@ -10,8 +10,8 @@ namespace SceneDataInterface
     public interface ISceneData
     {
         public List<Entity> Entities { get; }
-        public Dictionary<Type, (List<BaseComponent>, int)> ComponentsByType { get; }
-        public Dictionary<Type, SceneDataContainer> SceneDataStorage { get; }
+        public Dictionary<string, (List<BaseComponent>, int)> ComponentsByType { get; }
+        public Dictionary<string, SceneDataContainer> SceneDataStorage { get; }
         public EventsManager SceneEventManager { get; }
         public SpriteBatch SpriteBatch { get; }
         public List<Entity> EntitiesToDestroy { get; set; }

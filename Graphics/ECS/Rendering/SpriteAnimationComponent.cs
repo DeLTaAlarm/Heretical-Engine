@@ -2,7 +2,7 @@
 using GraphicsData;
 using HDataCore;
 
-namespace Graphics.ECS.Rendering;
+namespace HGraphics.ECS.Rendering;
 
 public class SpriteAnimationComponent : BaseComponent
 {

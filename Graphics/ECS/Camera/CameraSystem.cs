@@ -3,7 +3,7 @@ using StandartComponents.ECS;
 using HSystemsCore;
 using static SceneDataInterface.ECSManager;
 
-namespace Graphics.ECS.Camera;
+namespace HGraphics.ECS.Camera;
 
 [SystemsOrder("Rendering", 0)]
 public class CameraSystem : BaseProcessingSystem

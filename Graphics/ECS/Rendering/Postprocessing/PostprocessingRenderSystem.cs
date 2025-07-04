@@ -1,12 +1,11 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Graphics.ECS.Camera;
+using HGraphics.ECS.Camera;
 using System.Linq;
 using HSystemsCore;
 using static SceneDataInterface.ECSManager;
-using HCore;
 
-namespace Graphics.ECS.Rendering.Postprocessing
+namespace HGraphics.ECS.Rendering.Postprocessing
 {
     [SystemsRenderingOrder("Postprocessing", 128)]
     internal class PostprocessingRenderSystem : BaseRenderingSystem

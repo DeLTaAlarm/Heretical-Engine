@@ -2,9 +2,10 @@
 using Microsoft.Xna.Framework;
 using HSystemsCore;
 using StandartComponents.ECS;
+using GraphicsData;
 using static SceneDataInterface.ECSManager;
 
-namespace Graphics.ECS.Rendering
+namespace HGraphics.ECS.Rendering
 {
     [SystemsRenderingOrder("Rendering", 128)]
     public class SpriteRenderingSystem : BaseRenderingSystem

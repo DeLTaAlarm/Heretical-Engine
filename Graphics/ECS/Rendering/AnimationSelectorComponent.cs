@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using HDataCore;
 
-namespace Graphics.ECS.Rendering
+namespace HGraphics.ECS.Rendering
 {
     public class AnimationSelectorComponent : BaseComponent
     {

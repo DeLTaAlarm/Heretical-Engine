@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace Graphics.ECS.Camera;
+namespace HGraphics.ECS.Camera;
 
 public class Camera
 {

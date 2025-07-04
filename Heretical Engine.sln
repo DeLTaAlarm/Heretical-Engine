@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Start", "HereticalEngine/Start.csproj", "{E352DD9F-5F76-482B-9252-41144494CBB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Start", "HereticalEngine\Start.csproj", "{E352DD9F-5F76-482B-9252-41144494CBB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{4912E36C-D243-4505-B9F5-9AD8ED730A6C}"
 	ProjectSection(SolutionItems) = preProject
@@ -40,11 +40,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HDataCore", "HBase\HDataCor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceneDataInterface", "SceneDataInterface\SceneDataInterface.csproj", "{125058C2-8484-44E9-9148-6FDE48349893}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StandartComponents", "StandartComponents\StandartComponents.csproj", "{0446E2AC-A43D-4F55-BCB8-A598FC1E8A71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StandardComponents", "StandartComponents\StandardComponents.csproj", "{0446E2AC-A43D-4F55-BCB8-A598FC1E8A71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HInfrastructure", "CoreServices\HInfrastructure.csproj", "{A99B2B19-CA5D-40C2-BAD9-2CE6FFBAB2D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HInfrastructure", "CoreServices\HInfrastructure.csproj", "{A99B2B19-CA5D-40C2-BAD9-2CE6FFBAB2D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsData", "GraphicsData\GraphicsData.csproj", "{4DEAA754-6994-49A3-A704-3E5989FCE262}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphicsData", "GraphicsData\GraphicsData.csproj", "{4DEAA754-6994-49A3-A704-3E5989FCE262}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

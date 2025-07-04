@@ -4,7 +4,7 @@ using HInfrastructure;
 
 namespace HCore
 {
-    public class GameLoopCore : Game
+    public class GameLoopCore : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -15,8 +15,9 @@ namespace HCore
         //private SpriteBatch spriteBatch;
         //public GameWorld gameWorld;
 
-        public GameLoopCore()
+        public GameLoopCore(AssemblyLoader _assemblyLoader)
         {
+            assemblyLoader = _assemblyLoader;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -29,14 +30,10 @@ namespace HCore
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
 
-            assemblyLoader = new AssemblyLoader();
-
-            assemblyLoader.LoadAssembly();
-            assemblyLoader.LoadAssembly("StandartComponents");
+            assemblyLoader.LoadAssembly("StandardComponents");
             assemblyLoader.LoadAssembly("Input");
             assemblyLoader.LoadAssembly("HPhysics");
             assemblyLoader.LoadAssembly("HGraphics");
-            assemblyLoader.LoadAssembly("Game");
             assemblyLoader.LoadAssembly("DebugTools");
 
             assemblyLoader.LoadSystemsFromAssemblies();

@@ -2,7 +2,7 @@
 using HDataCore;
 using System.Collections.Generic;
 
-namespace Graphics.ECS.Camera;
+namespace HGraphics.ECS.Camera;
 
 public class CameraComponent : BaseComponent
 {

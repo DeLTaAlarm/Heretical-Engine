@@ -10,6 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\HECSCore\HSystemsCore.csproj" />
     <ProjectReference Include="..\SceneDataInterface\SceneDataInterface.csproj" />
-    <ProjectReference Include="..\StandartComponents\StandartComponents.csproj" />
+    <ProjectReference Include="..\StandartComponents\StandardComponents.csproj" />
   </ItemGroup>
 </Project>

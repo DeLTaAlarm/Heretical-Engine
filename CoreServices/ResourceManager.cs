@@ -24,14 +24,36 @@ namespace HInfrastructure
             contentManager = _contentManager;
             graphicsDevice = _graphicsDevice;
 
-            foreach (string file in Directory.EnumerateFiles(Directory.GetParent(Directory.GetCurrentDirectory()).Parent + "/Resources/Sprites/", "*.png", SearchOption.AllDirectories)) //Автоматическая загрузка .png
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string spriteDir = Path.Combine(baseDir, "Resources", "Sprites");
+
+            if (Directory.Exists(spriteDir))
             {
-                using (var fileStream = new FileStream(file, FileMode.Open))
+                foreach (string file in Directory.EnumerateFiles(spriteDir, "*.png", SearchOption.AllDirectories))
                 {
-                    Texture2D t_texture = Texture2D.FromStream(graphicsDevice, fileStream);
-                    FileInfo t_file = new FileInfo(file);
-                    textures.Add(t_file.Name.Split(".")[0], t_texture);
+                    using (var fileStream = new FileStream(file, FileMode.Open))
+                    {
+                        Texture2D t_texture = Texture2D.FromStream(graphicsDevice, fileStream);
+                        FileInfo t_file = new FileInfo(file);
+                        textures.Add(Path.GetFileNameWithoutExtension(t_file.Name), t_texture);
+                    }
                 }
+            }
+            else
+            {
+                throw new DirectoryNotFoundException($"Папка ресурсов не найдена: {spriteDir}");
+            }
+
+            foreach (var kvp in textures)
+            {
+                string textureName = kvp.Key;
+                Texture2D texture = kvp.Value;
+
+                SpriteAtlas atlas = new SpriteAtlas(texture, 1, 1);
+                spriteAtlasList.Add(textureName, atlas);
+
+                Sprite sprite = new Sprite(atlas, 0);
+                spriteList.Add(textureName, sprite);
             }
         }
 

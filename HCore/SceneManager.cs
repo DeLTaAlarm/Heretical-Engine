@@ -16,7 +16,7 @@ namespace HCore
         public readonly GraphicsDevice graphicsDevice;
         public GameScene currentScene;
 
-        public Dictionary<Type, GlobalDataContainer> globalDataStorage = new Dictionary<Type, GlobalDataContainer>();
+        public Dictionary<string, GlobalDataContainer> globalDataStorage = new Dictionary<string, GlobalDataContainer>();
 
         public SceneManager(GameLoopCore _gameCore, AssemblyLoader _assemblyLoader, ResourceManager _resourceManager, GraphicsDevice _graphicsDevice)
         {

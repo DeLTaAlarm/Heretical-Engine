@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using EventsSystem.EventManage;
-using Graphics.ECS.Camera;
+using HGraphics.ECS.Camera;
 using HCore.Core;
 using HSystemsCore;
 using HDataCore;
@@ -26,8 +26,8 @@ namespace HCore
         public readonly GameLoopCore gameCore;
 
         private List<Entity> entities = new List<Entity>();
-        private Dictionary<Type, (List<BaseComponent>, int)> componentsByType = new Dictionary<Type, (List<BaseComponent>, int)>();
-        private Dictionary<Type, SceneDataContainer> sceneDataStorage;
+        private Dictionary<string, (List<BaseComponent>, int)> componentsByType = new Dictionary<string, (List<BaseComponent>, int)>();
+        private Dictionary<string, SceneDataContainer> sceneDataStorage;
 
         public BaseProcessingSystem[] processingSystems;
         public Dictionary<SystemsRenderingOrderEnum, BaseRenderingSystem[]> renderingSystems;
@@ -39,8 +39,8 @@ namespace HCore
         public GraphicsDevice GraphicsDevice { get { return graphicsDevice; } }
         public ResourceManager ResourceManager { get { return resourceManager; } }
         public List<Entity> Entities { get { return entities; } }
-        public Dictionary<Type, (List<BaseComponent>, int)> ComponentsByType { get { return componentsByType; } }
-        public Dictionary<Type, SceneDataContainer> SceneDataStorage { get { return sceneDataStorage; } }
+        public Dictionary<string, (List<BaseComponent>, int)> ComponentsByType { get { return componentsByType; } }
+        public Dictionary<string, SceneDataContainer> SceneDataStorage { get { return sceneDataStorage; } }
         public EventsManager SceneEventManager {  get { return sceneEventManager; } }
         public SpriteBatch SpriteBatch { get { return spriteBatch; } }
         public List<Entity> EntitiesToDestroy { get; set; } = new List<Entity>();

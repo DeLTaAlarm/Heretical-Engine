@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using GraphicsData;
-using Graphics.ECS.Camera;
+using HGraphics.ECS.Camera;
 using HPhysics.ECS.Collision.CollisionProcessing;
 using HPhysics.ECS.Movement;
-using Graphics.ECS.Rendering;
+using HGraphics.ECS.Rendering;
 using HDataCore;
 using HSystemsCore;
 using static SceneDataInterface.ECSManager;

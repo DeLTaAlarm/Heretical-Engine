@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using HSystemsCore;
-using Graphics.ECS.Camera;
+using HGraphics.ECS.Camera;
 using static SceneDataInterface.ECSManager;
 
 namespace Graphics.ECS.Rendering.Postprocessing
